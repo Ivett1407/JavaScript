@@ -33,19 +33,222 @@ console.log(Boolean (0)); //valores falsos
 //////  undefined, null & NaN
 
 //undefined es una variable que no tiene un valos o que no esta inicializada
-//null es una variable que no tiene valor 
+//null es una variable que no tiene valor , esta vacia , el programador lo hace intencionalmente
+//NaN significa "no es un numero" Not a Number
 
-let indefinida; 
+let indefinida; //undefined
 console.log(indefinida);
 
-let aa = 1;
+let nulo = null; //null
+console.log(nulo);
 
-console.log(aa);
+let noEsUnNumero = "hola" * 3.7;   //NaN
+console.log(noEsUnNumero);
+
+
+//////FUNCIONES
+
+//Función Declarada
+
+function estaEsUnaFuncion() {
+
+   console.log("uno");
+   console.log("dos");
+   console.log("tres");
+}
+
+//Función Declarada con retorno
+
+function estaEsUnaFuncionQueDevuelveValor() {
+
+console.log("uno");
+console.log("dos");
+console.log("tres");
+return "La función a retornado una cadena de texto"
+}
+
+//como invocar una función
+
+estaEsUnaFuncion();
+
+let e = estaEsUnaFuncionQueDevuelveValor();
+
+console.log(e);
+
+///// funcion con retorno y valor asigando
+
+function saludar(nombre, edad) {
+console.log(`Hola mi nombre es ${nombre}  y tengo  ${edad} años`);
+}
+
+saludar("kenai", 7) //aqui se asigan valores a los parametros de una función 
+saludar(); //aqui  no se estan asignando valores 
+
+
+//función declarada VS función expresada
+
+funcionDeclarada();
+
+function funcionDeclarada() {
+console.log('Esto es una función declarada,\
+puede invocarse en cualquier parte de nuestro código,\
+incluso antes de que la función sea declarada');
+}
+
+funcionDeclarada();
 
 
 
+//funciones expresadas
+//lo que se acostumbra es usar "const" y no "let"
+//funcion anonima es cuando no se le da nombre a la función
+
+//funcionExpresada();
+
+const funcionExpresada = function() {
+console.log("Esto es una función expresada, es decir\
+una función que se le ha asignado como valor una\
+variable, si invocamos esta función antes de su\
+definición JS nos dira...curso.html:106 Uncaught\
+ ReferenceError: Cannot access 'funcionExpresada'\
+  before initialization at curso.html:106:1");
+}
+
+funcionExpresada();
 
 
+//// ARREGLOS "ARRAY"
+
+const ea = [];
+const f = [1,2,3,];
+const g = [1,true, "Hola",["A", "B", "C",[1, 2, 3,]]];
+
+console.log(ea);
+console.log(f);
+console.log(g);
+console.log(f.length); //length es una propiedad 
+console.log(g[2]);
+console.log(g[0]);
+console.log(g[2][2]);
+
+const h = Array.of(1, 2, 3,); //otro metodo para escirbir un array
+                              //objeto: Array  metodo: of
+console.log(h);
+
+const i = Array(100).fill(false);
+console.log(i);
+
+const colores = Array("Rojo", "Verde", "Azul",);
+console.log(colores);
+
+colores.push("Negro"); //metodo push agrega un elemento al final
+console.log(colores);
+
+colores.pop();  //metodo para eliminar el ultimo elemento
+console.log(colores);
+
+
+//esto es un metodo del objeto Array
+colores.forEach(function (el, index) {  //como primer valor se usa la palabra "el o element" y segundo valor "i o index"
+   console.log(`<li id="${index}">${el} </li>`);
+});
+
+
+
+//OBJETOS
+//Dentro de un objeto a las variables se les va llamar atributos/propiedades
+//y a las funciones se les llama metodos 
+
+const ivett = {
+
+   nombre: "Karla",
+   Apellido: "Segoviano",
+   Edad: 32,
+   Pasatiempos: ["Senderismo", "Hacer ejercicio", "Bailar"],
+   Soltero: false,
+   Contacto: {
+      email: "kisegbau@outlook.com",
+      movil: "8119090447",
+   },
+   saludar: function() {
+      console.log("Hola :)") //como aqui ya usamos el console solo hay que llamar la funcion
+   },
+   diMiNombre: function() {
+      console.log(`Hola me llamo ${this.nombre} ${this.Apellido}\
+      y tengo ${this.Edad} años`);
+   },
+}
+
+console.log(ivett);
+console.log(ivett["nombre"]);
+console.log(ivett.saludar);
+console.log(ivett.Pasatiempos);
+ivett.saludar();
+ivett.diMiNombre();
+console.log(Object.keys(ivett)); //metodo para que se enlisten las llaves del objeto (metodo iterable) 
+console.log(Object.values(ivett)); //metodo para dar los valores de las llaves
+console.log(ivett.hasOwnProperty("nombre")); //metodo para evaluar si la llave que le pasamos se encuntra dentro del objeto
+
+
+//OPERADORES
+
+//Operadores Arisméticos
+
+let j = 5 + 5 * 10 * ( - 2);
+let modulo = 5 % 2; //el modulo te devuelve el residuo de la división 
+
+console.log(j);
+console.log(modulo);
+
+//Operadores Relacionales < , > , >=, <=, ==, ===; !=, !==
+
+console.log(8>9);
+console.log(8<9);
+console.log(3<=4);
+console.log(3>=3);
+console.log(2>3);
+
+/* 
+un = es asignación de variable
+dos == es comparación solo del valor
+tres === es comparación de tipo de dato y de valor
+*/
+
+console.log(7 == 7);
+console.log("7" == 7);
+console.log(0 == false);
+
+console.log(7 === 7);
+console.log("7" === 7);
+console.log(0 === false);
+
+//Operadores de Decremento - Incremento
+
+let incremento = 1;
+
+// incremento = incremento + 2;
+// incremento += 2;
+// incremento *= 3;
+
+
+
+//Operador unario
+
+//incremento++;
+incremento--;
+
+console.log(incremento);
+
+
+//Operadores Lógicos
+//! - Not - Niega , es decir lo que es verdadero se vuelve falso y viseversa
+//|| - Or - Cuando tengo 2 o más condiciones con que una se cumpla sera verdadero
+//&& - And - Cuando tengo 2 o más condiciones todas tienen que cumplirse para que sea verdadero
+
+console.log(!true);
+console.log(!false);
+console.log((9===9)||("9"===9));
+console.log((9===9)&&("9"===9));
 
 
 
